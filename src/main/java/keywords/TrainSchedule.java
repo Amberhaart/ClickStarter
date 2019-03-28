@@ -44,7 +44,8 @@ public class TrainSchedule {
   public static String getCurrentTime() {
     Date date = new Date();
     String currentTime = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
-    return currentTime;
+    String time = currentTime.replace(":", "");
+    return time;
   }
 
   public static List<WebElement> getDepartures(WebDriver driver) {
@@ -53,7 +54,7 @@ public class TrainSchedule {
     List<WebElement> listOfDeps = driver.findElements(By.className("l"));
     for (i = 0; i < listOfDeps.size(); i++) {
       if (i % 2 == 0) {
-        System.out.println(listOfDeps.get(i).getText());
+        System.out.println(listOfDeps.get(i).getText().replace(":", ""));
       }
     }
     return listOfDeps;
