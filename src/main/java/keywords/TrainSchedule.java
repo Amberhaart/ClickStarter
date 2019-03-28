@@ -14,14 +14,14 @@ import java.util.Date;
 import java.util.List;
 
 public class TrainSchedule {
-  public static WebDriverWait webDriverWait;
-  public static String url = "http://elvira.mav-start.hu/";
+  private static WebDriverWait webDriverWait;
+  private static String url = "http://elvira.mav-start.hu/";
 
-  public static WebElement whereFromField;
-  public static WebElement whereToField;
-  public static WebElement submitBtn;
-  public static String whereFrom = "Rákoshegy";
-  public static String whereTo = "Budapest-Keleti";
+  private static WebElement whereFromField;
+  private static WebElement whereToField;
+  private static WebElement submitBtn;
+  private static String whereFrom = "Rákoshegy";
+  private static String whereTo = "Budapest-Keleti";
 
   public static void goToTrainSchedulePage(WebDriver driver, String url) {
     webDriverWait = new WebDriverWait(driver, Config.timeOutInSeconds);
