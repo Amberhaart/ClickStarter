@@ -29,6 +29,7 @@ public class Weather {
   }
 
   public static void main(String[] args) {
+    webDriverWait = new WebDriverWait(driver, Config.timeOutInSeconds);
     System.out.println(getWeatherForecastText(driver));
   }
 }
