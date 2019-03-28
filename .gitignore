@@ -38,5 +38,8 @@ test-auto.iml
 # Target binary code
 target/
 
+# configuration.Config file
+src/test/java/configuration/Config.java
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
