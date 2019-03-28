@@ -9,8 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class TrainSchedule {
@@ -41,29 +41,32 @@ public class TrainSchedule {
     submitBtn.click();
   }
 
-  public static String getCurrentTime() {
-    Date date = new Date();
+  public static int getCurrentTime() {
     String currentTime = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
     String time = currentTime.replace(":", "");
-    return time;
+    int timeNumber = Integer.parseInt(time);
+    return timeNumber;
   }
 
   public static List<WebElement> getDepartures(WebDriver driver) {
     searchFromSchedule(driver, whereFrom, whereTo);
+
+    List<WebElement> listOfWebelements = driver.findElements(By.className("l"));
+    ArrayList listOfDepartures = new ArrayList();
     int i;
-    List<WebElement> listOfDeps = driver.findElements(By.className("l"));
-    for (i = 0; i < listOfDeps.size(); i++) {
+    for (i = 0; i < listOfWebelements.size(); i++) {
       if (i % 2 == 0) {
-        System.out.println(listOfDeps.get(i).getText().replace(":", ""));
+        listOfDepartures.add(Integer.parseInt(listOfWebelements.get(i).getText().replace(":", "")));
       }
     }
-    return listOfDeps;
+    return listOfDepartures;
   }
 
   public static void main(String[] args) {
     System.setProperty(Config.webDriverName, Config.webDriverPath);
     WebDriver driver = new FirefoxDriver();
     System.out.println(getDepartures(driver));
+    System.out.println(" ");
     System.out.println(getCurrentTime());
   }
 }
