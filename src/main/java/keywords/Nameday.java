@@ -2,6 +2,7 @@ package keywords;
 
 import configuration.Config;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,6 +11,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.security.Key;
 
 public class Nameday {
 
@@ -49,7 +52,12 @@ public class Nameday {
     WebElement postBox = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div[3]/div[1]/div/div[2]/div[2]/div[1]/div[2]/div/div[3]/div/div/div[2]/div[1]/div/div/div/div[2]/div/div[1]/div/div[1]/div[1]/div[2]/div/div/div/div/div/div/div[2]/div")));
     actions.moveToElement(postBox).perform();
     postBox.click();
-    postBox.sendKeys("Minden kedves " + nameday + " nevű ismerősömnek Boldog Névnapot kívánok!");
+    postBox.sendKeys(" Minden kedves " + nameday + " nevű ismerősömnek Boldog Névnapot kívánok!");
+    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/div[3]/div[1]/div/div[2]/div[2]/div[1]/div[2]/div/div[3]/div/div/div[2]/div[1]/div/div/div/div[2]/div/div[2]/div[2]/ul/li[2]"))).click();
+    WebElement tagger = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div[3]/div[1]/div/div[2]/div[2]/div[1]/div[2]/div/div[3]/div/div/div[2]/div[1]/div/div/div/div[2]/div/div[2]/div[1]/div/table/tbody/tr/td[2]/div/div/span[2]/label/input")));
+    tagger.sendKeys(nameday);
+    tagger.sendKeys(Keys.RETURN);
+
 
     WebElement shareButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div[3]/div[1]/div/div[2]/div[2]/div[1]/div[2]/div/div[3]/div/div/div[2]/div[1]/div/div/div/div[2]/div/div[2]/div[3]/div[2]/div/div/button")));
     shareButton.click();
