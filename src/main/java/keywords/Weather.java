@@ -4,7 +4,6 @@ import configuration.Config;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -30,7 +29,7 @@ public class Weather {
 
   public static void main(String[] args) {
     System.setProperty(Config.webDriverName, Config.webDriverPath);
-    WebDriver driver = new ChromeDriver();
+    WebDriver driver = new FirefoxDriver();
     System.out.println(getWeatherForecastText(driver));
     driver.quit();
   }
