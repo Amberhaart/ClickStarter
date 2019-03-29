@@ -47,17 +47,10 @@ public class News {
     } catch (Exception e) {
     }
   }
-  
 
   public static void readAllNewsOutWithWait(WebDriver driver){
     for (int i = 0; i < getHeadLineCounter(driver); i++){
       readItOutLoud(driver, getHeadline(driver, i), 7000);
     }
-  }
-
-  public static void main(String[] args) {
-    System.setProperty(Config.webDriverName, Config.webDriverPath);
-    WebDriver driver = new FirefoxDriver();
-    readAllNewsOutWithWait(driver);
   }
 }
