@@ -22,19 +22,6 @@ public class Birthday {
     } catch (Exception e) {
     }
   }
-  public static void main(String[] args) {
-    System.setProperty(Config.webDriverName, Config.webDriverPath);
-    WebDriver driver;
-    FirefoxProfile profile = new FirefoxProfile();
-    profile.setPreference("permissions.default.desktop-notification", 1);
-    DesiredCapabilities capabilities=DesiredCapabilities.firefox();
-    capabilities.setCapability(FirefoxDriver.PROFILE, profile);
-    driver = new FirefoxDriver(capabilities);
-    driver.manage().window().maximize();
-
-    logIntoFacebook(driver);
-    checkBirthdays(driver);
-  }
 
   public static void logIntoFacebook(WebDriver driver) {
     WebDriverWait wait = new WebDriverWait(driver, Config.timeOutInSeconds);
@@ -53,10 +40,14 @@ public class Birthday {
     WebElement tab = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"u_jsonp_2_1\"]")));
     actions.moveToElement(tab).perform();
     tab.click();
+  }
 
+  public static void wishHappyBirthday(WebDriver driver) {
+    WebDriverWait wait = new WebDriverWait(driver, Config.timeOutInSeconds);
     WebElement textBox = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("u_jsonp_3_8")));
     textBox.click();
     textBox.sendKeys("Boldog Születésnapot! :)");
-    textBox.sendKeys(Keys.RETURN);
+    //textBox.sendKeys(Keys.RETURN);
+    waitForLoad();
   }
 }

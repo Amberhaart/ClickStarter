@@ -18,26 +18,8 @@ public class Nameday {
 
   public static String nameday = "";
 
-  public static void main(String[] args) {
-    System.setProperty(Config.webDriverName, Config.webDriverPath);
-    WebDriver driver;
-    FirefoxProfile profile = new FirefoxProfile();
-    profile.setPreference("permissions.default.desktop-notification", 1);
-    DesiredCapabilities capabilities=DesiredCapabilities.firefox();
-    capabilities.setCapability(FirefoxDriver.PROFILE, profile);
-    driver = new FirefoxDriver(capabilities);
-    driver.manage().window().maximize();
-
-    wishHappyNameDayOnFacebook(driver);
-
-  }
-
   public static void logIntoFacebook(WebDriver driver) {
-    WebDriverWait wait = new WebDriverWait(driver, Config.timeOutInSeconds);
-    driver.get("https://www.facebook.com/");
-    wait.until(ExpectedConditions.presenceOfElementLocated(By.id("email"))).sendKeys(Config.userName);
-    wait.until(ExpectedConditions.presenceOfElementLocated(By.id("pass"))).sendKeys(Config.password);
-    wait.until(ExpectedConditions.presenceOfElementLocated(By.id("loginbutton"))).click();
+    Birthday.logIntoFacebook(driver);
   }
 
   public static void postOnFacebook(WebDriver driver) {

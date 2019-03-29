@@ -32,7 +32,7 @@ public class News {
     return headlines;
   }
 
-  public static void readItOutLoud(WebDriver driver, String textToRead){
+  public static void readItOutLoud(WebDriver driver, String textToRead, int time){
     driver.get(translateUrl);
     WebDriverWait wait = new WebDriverWait(driver, Config.timeOutInSeconds);
     wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//textarea[@id=\"source\"]"))).sendKeys(textToRead);
@@ -42,22 +42,15 @@ public class News {
     }
     WebElement loudBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div/div/div[5]/div[3]/div[2]")));
     loudBtn.click();
-  }
-  
-
-  public static void readAllNewsOutWithWait(WebDriver driver){
-    for (int i = 0; i < getHeadLineCounter(driver); i++){
-      readItOutLoud(driver, getHeadline(driver, i));
-      try {
-        Thread.sleep(9000);
-      } catch (Exception e) {
-      }
+    try {
+      Thread.sleep(time);
+    } catch (Exception e) {
     }
   }
 
-  public static void main(String[] args) {
-    System.setProperty(Config.webDriverName, Config.webDriverPath);
-    WebDriver driver = new FirefoxDriver();
-    readAllNewsOutWithWait(driver);
+  public static void readAllNewsOutWithWait(WebDriver driver){
+    for (int i = 0; i < getHeadLineCounter(driver); i++){
+      readItOutLoud(driver, getHeadline(driver, i), 7000);
+    }
   }
 }
