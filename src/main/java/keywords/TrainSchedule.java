@@ -48,7 +48,7 @@ public class TrainSchedule {
     return timeNumber;
   }
 
-  public static List<WebElement> getDepartures(WebDriver driver) {
+  public static ArrayList<Integer> getDepartures(WebDriver driver) {
     searchFromSchedule(driver, whereFrom, whereTo);
 
     List<WebElement> listOfWebelements = driver.findElements(By.className("l"));
@@ -62,11 +62,22 @@ public class TrainSchedule {
     return listOfDepartures;
   }
 
+  public static String getRecommendedTime(WebDriver driver) {
+    ArrayList<Integer> list = getDepartures(driver);
+    Integer smallestBigger = new Integer(0);
+    int i;
+    for (i = 0; i <= list.size(); i++) {
+      if (getCurrentTime() < list.get(i)) {
+        smallestBigger = list.get(i);
+        break;
+        }
+    }
+    return smallestBigger.toString();
+  }
+
   public static void main(String[] args) {
     System.setProperty(Config.webDriverName, Config.webDriverPath);
     WebDriver driver = new FirefoxDriver();
-    System.out.println(getDepartures(driver));
-    System.out.println(" ");
-    System.out.println(getCurrentTime());
+    System.out.println("A következő vonat " + getRecommendedTime(driver) + " kor indul.");
   }
 }
