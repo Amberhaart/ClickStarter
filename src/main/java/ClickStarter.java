@@ -20,7 +20,9 @@ public class ClickStarter {
     driver.navigate().refresh();
     Birthday.checkBirthdays(driver);
     Birthday.wishHappyBirthday(driver);
+    News.readItOutLoud(driver, "Jó reggelt, a mai nap időjárása következik:", 5000);
     News.readItOutLoud(driver, Weather.getWeatherForecastText(driver), 25000);
+    News.readItOutLoud(driver, "A mai nap főbb hírei:", 5000);
     News.readAllNewsOutWithWait(driver);
     PublicTransport.setRoute(driver, PublicTransport.home, PublicTransport.workplace);
     News.readItOutLoud(driver, PublicTransport.getPublicRoute(driver), 20000);
