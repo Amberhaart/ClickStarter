@@ -62,5 +62,6 @@ public class Birthday {
     textBox.click();
     textBox.sendKeys("Boldog Születésnapot! :)");
     //textBox.sendKeys(Keys.RETURN);
+    waitForLoad();
   }
 }
