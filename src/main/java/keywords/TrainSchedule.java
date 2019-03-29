@@ -74,7 +74,8 @@ public class TrainSchedule {
     }
     int min = smallestBigger % 100;
     int hour = smallestBigger / 100;
-    return "A következő vonat " + hour + " óra " + min + " perckor indul.";
+    return "A következő vonat " + hour + " óra " + min + " perckor indul " + whereFrom + " vasútállomásról a "
+            + whereTo + " pályaudvarra.";
   }
 
   public static void main(String[] args) {
