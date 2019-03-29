@@ -16,7 +16,6 @@ import java.util.List;
 public class TrainSchedule {
   private static WebDriverWait webDriverWait;
   private static String url = "http://elvira.mav-start.hu/";
-
   private static WebElement whereFromField;
   private static WebElement whereToField;
   private static WebElement submitBtn;
@@ -76,11 +75,5 @@ public class TrainSchedule {
     int hour = smallestBigger / 100;
     return "A következő vonat " + hour + " óra " + min + " perckor indul " + whereFrom + " vasútállomásról a "
             + whereTo + " pályaudvarra.";
-  }
-
-  public static void main(String[] args) {
-    System.setProperty(Config.webDriverName, Config.webDriverPath);
-    WebDriver driver = new FirefoxDriver();
-    System.out.println(getRecommendedTime(driver));
   }
 }
