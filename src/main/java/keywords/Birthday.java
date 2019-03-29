@@ -34,6 +34,7 @@ public class Birthday {
 
     logIntoFacebook(driver);
     checkBirthdays(driver);
+    wishHappyBirthday(driver);
   }
 
   public static void logIntoFacebook(WebDriver driver) {
@@ -53,10 +54,13 @@ public class Birthday {
     WebElement tab = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"u_jsonp_2_1\"]")));
     actions.moveToElement(tab).perform();
     tab.click();
+  }
 
+  public static void wishHappyBirthday(WebDriver driver) {
+    WebDriverWait wait = new WebDriverWait(driver, Config.timeOutInSeconds);
     WebElement textBox = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("u_jsonp_3_8")));
     textBox.click();
     textBox.sendKeys("Boldog Születésnapot! :)");
-    textBox.sendKeys(Keys.RETURN);
+    //textBox.sendKeys(Keys.RETURN);
   }
 }
