@@ -20,7 +20,7 @@ public class TrainSchedule {
   private static WebElement whereFromField;
   private static WebElement whereToField;
   private static WebElement submitBtn;
-  private static String whereFrom = "Rákoshegy";
+  private static String whereFrom = "Rákoscsaba";
   private static String whereTo = "Budapest-Keleti";
 
   public static void goToTrainSchedulePage(WebDriver driver, String url) {
@@ -66,18 +66,20 @@ public class TrainSchedule {
     ArrayList<Integer> list = getDepartures(driver);
     Integer smallestBigger = new Integer(0);
     int i;
-    for (i = 0; i <= list.size(); i++) {
+    for (i = 0; i < list.size(); i++) {
       if (getCurrentTime() < list.get(i)) {
         smallestBigger = list.get(i);
         break;
         }
     }
-    return smallestBigger.toString();
+    int min = smallestBigger % 100;
+    int hour = smallestBigger / 100;
+    return "A következő vonat " + hour + " óra " + min + " perckor indul.";
   }
 
   public static void main(String[] args) {
     System.setProperty(Config.webDriverName, Config.webDriverPath);
     WebDriver driver = new FirefoxDriver();
-    System.out.println("A következő vonat " + getRecommendedTime(driver) + " kor indul.");
+    System.out.println(getRecommendedTime(driver));
   }
 }
