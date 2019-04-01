@@ -1,9 +1,9 @@
 package configuration;
 
 public class Config {
-  public static final String webDriverName = "webdriver.gecko.driver";
-  public static final String webDriverPath = "C:\\Drivers\\Driver_Firefox\\geckodriver.exe";
-  public static final String userName = "";
-  public static final String password = "";
+  public static final String webDriverName = "";              //your WebDriver here
+  public static final String webDriverPath = "";              //your Webdriver path here
+  public static final String userName = "";                   //your username for Facebook
+  public static final String password = "";                   // your password for Facebook
   public static final int timeOutInSeconds = 30;
 }
