@@ -22,11 +22,4 @@ public class Weather {
     return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("bal"))).getText()
         + webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("jobb"))).getText();
   }
-
-  public static void main(String[] args) {
-    System.setProperty(Config.webDriverName, Config.webDriverPath);
-    WebDriver driver = new FirefoxDriver();
-    System.out.println(getWeatherForecastText(driver));
-    driver.quit();
-  }
 }
